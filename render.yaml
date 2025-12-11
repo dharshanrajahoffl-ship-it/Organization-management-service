@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: org-service
+    env: docker
+    repo: https://github.com/dharshanrajahoffl-ship-it/Organization-management-service
+    branch: main
+    plan: free
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 1"
+    envVars:
+      - key: MONGO_URI
+        value: "mongodb://<your-mongo-host>:27017"
+      - key: MASTER_DB
+        value: "org_master_db"
+      - key: SECRET_KEY
+        value: "replace_this_with_a_strong_secret"
+      - key: ALGORITHM
+        value: "HS256"
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "60"
